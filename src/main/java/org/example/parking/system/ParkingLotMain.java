@@ -69,12 +69,13 @@ public class ParkingLotMain {
                         parkingLotService.display(vehicleType, parkInfo, displayType);
                         break;
                     }
-                    default:
+                    default: {
+                        System.out.println("Wrong command. Please re-enter");
                         break;
+                    }
                 }
             }catch (Exception ex){
                 System.out.println("Wrong command. Please re-enter");
-                printListCmd();
             }
 
         }
