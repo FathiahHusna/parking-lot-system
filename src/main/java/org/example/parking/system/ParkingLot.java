@@ -25,6 +25,7 @@ public class ParkingLot {
             String command = parts[0];
 
             switch(command){
+                //#1 create_parking_lot <parking_lot_id> <no_of_floors> <no_of_slots_per_floor>
                 case  "create_parking_lot": {
                     String parkLotId = parts[1];
                     int numFloor = Integer.parseInt(parts[2]);
@@ -34,7 +35,7 @@ public class ParkingLot {
                     System.out.println(result);
                     break;
                 }
-                //#2 park vehicle park_vehicle CAR KA-01-DB-1234 black
+                //#2 park_vehicle <vehicle_type> <reg_no> <color>
                 case "park_vehicle": {
                     String carType = parts[1];
                     String regNo = parts[2];
@@ -48,6 +49,7 @@ public class ParkingLot {
                     System.out.println(result);
                     break;
                 }
+                //#3 unpark_vehicle <ticket_id>
                 case "unpark_vehicle":{
                     String ticketId = parts[1];
 
@@ -55,16 +57,19 @@ public class ParkingLot {
                     System.out.println(result);
                     break;
                 }
+                //#4 display <display_type> <vehicle_type>
                 case "display_free_count": {
                     String vehicleType = parts[1];
                     displayFreeCount(vehicleType, parkInfo);
                     break;
                 }
+                //#5 display <display_type> <vehicle_type>
                 case "display_free_slots": {
                     String vehicleType = parts[1];
                     displayFreeSlot(vehicleType, parkInfo);
                     break;
                 }
+                //#6 display <display_type> <vehicle_type>
                 case "display_occupied_slots": {
                     String vehicleType = parts[1];
                     displayOccupiedSlot(vehicleType, parkInfo);
@@ -165,7 +170,6 @@ public class ParkingLot {
 
         if(availableMap!=null && !availableMap.isEmpty()) {
             for (Map.Entry<Integer, Boolean[]> entry : availableMap.entrySet()) {
-                boolean unpark = true;
                 Boolean[] arrSlots = entry.getValue();
                 int floor = entry.getKey();
                 int countSlot = 0;
@@ -193,7 +197,6 @@ public class ParkingLot {
 
         if(availableMap!=null && !availableMap.isEmpty()) {
             for (Map.Entry<Integer, Boolean[]> entry : availableMap.entrySet()) {
-                boolean unpark = true;
                 Boolean[] arrSlots = entry.getValue();
                 int floor = entry.getKey();
                 for(int i=0; i< arrSlots.length; i++){
@@ -224,7 +227,6 @@ public class ParkingLot {
 
         if(availableMap!=null && !availableMap.isEmpty()) {
             for (Map.Entry<Integer, Boolean[]> entry : availableMap.entrySet()) {
-                boolean unpark = true;
                 Boolean[] arrSlots = entry.getValue();
                 int floor = entry.getKey();
                 for(int i=0; i< arrSlots.length; i++){
